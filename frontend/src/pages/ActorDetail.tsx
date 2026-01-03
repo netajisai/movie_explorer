@@ -85,8 +85,8 @@ const ActorDetail: React.FC = () => {
                 <p className="text-gray-600">Loading filmography...</p>
               ) : movies && movies.length > 0 ? (
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {movies.map((movie) => (
-                    <Link key={movie.id} to={`/movies/${movie.id}`} className="group">
+                      {movies.map((movie: any) => (
+                        <Link key={movie.id ?? movie._id} to={`/movies/${movie.id ?? movie._id}`} className="group">
                       <div className="aspect-[2/3] bg-gray-200 rounded-lg overflow-hidden mb-2">
                         <img
                           src={movie.poster_url || 'https://via.placeholder.com/300x450'}

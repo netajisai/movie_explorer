@@ -10,8 +10,10 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const posterUrl = movie.poster_url || 'https://via.placeholder.com/300x450/1e293b/cbd5e1?text=No+Poster';
 
+  const movieId = (movie as any).id ?? (movie as any)._id;
+
   return (
-    <Link to={`/movies/${movie.id}`} className="block group">
+    <Link to={`/movies/${movieId}`} className="block group">
       <div className="card h-full">
         {/* Poster */}
         <div className="relative overflow-hidden aspect-[2/3] bg-gray-200">

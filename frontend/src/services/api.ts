@@ -143,17 +143,24 @@ export const actorsApi = {
 
   // Get actor's movies (if your backend has this endpoint)
   getMovies: async (id: string): Promise<MovieMinimal[]> => {
+    if (!id) return [];
+
     try {
       const { data } = await api.get<ApiResponse<MovieMinimal[]>>(`/actors/${id}/movies`);
-      return data.data;
+      return data.data.map((m: any) => ({
+        id: m.id ?? m._id,
+        title: m.title,
+        release_year: m.release_year,
+        poster_url: m.poster_url,
+      }));
     } catch (error) {
-      // If endpoint doesn't exist, fetch movies filtered by actor
-      const moviesData = await moviesApi.getAll({ actor_id: id, limit: 100 });
-      return moviesData.data.map(movie => ({
-        id: movie.id,
+      // If endpoint doesn't exist, fetch movies filtered by actor using the filter endpoint
+      const moviesData = await moviesApi.filter({ actor_id: id, limit: 100, page: 1 });
+      return moviesData.data.map((movie: any) => ({
+        id: movie.id ?? movie._id,
         title: movie.title,
         release_year: movie.release_year,
-        poster_url: movie.poster_url
+        poster_url: movie.poster_url,
       }));
     }
   },
@@ -202,17 +209,24 @@ export const directorsApi = {
 
   // Get director's movies
   getMovies: async (id: string): Promise<MovieMinimal[]> => {
+    if (!id) return [];
+
     try {
       const { data } = await api.get<ApiResponse<MovieMinimal[]>>(`/directors/${id}/movies`);
-      return data.data;
+      return data.data.map((m: any) => ({
+        id: m.id ?? m._id,
+        title: m.title,
+        release_year: m.release_year,
+        poster_url: m.poster_url,
+      }));
     } catch (error) {
-      // If endpoint doesn't exist, fetch movies filtered by director
-      const moviesData = await moviesApi.getAll({ director_id: id, limit: 100 });
-      return moviesData.data.map(movie => ({
-        id: movie.id,
+      // If endpoint doesn't exist, fetch movies filtered by director using the filter endpoint
+      const moviesData = await moviesApi.filter({ director_id: id, limit: 100, page: 1 });
+      return moviesData.data.map((movie: any) => ({
+        id: movie.id ?? movie._id,
         title: movie.title,
         release_year: movie.release_year,
-        poster_url: movie.poster_url
+        poster_url: movie.poster_url,
       }));
     }
   },

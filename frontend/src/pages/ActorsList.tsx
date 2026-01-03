@@ -16,6 +16,12 @@ const ActorsList: React.FC = () => {
     queryFn: () => actorsApi.getAll(page, limit),
   });
 
+  // Normalize response: backend may return either ListResponse or a plain array
+  const items = Array.isArray(data) ? data : data?.data ?? [];
+  const meta = Array.isArray(data)
+    ? { page, limit, total: items.length, pages: Math.max(1, Math.ceil(items.length / limit)) }
+    : data?.meta;
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
@@ -32,9 +38,9 @@ const ActorsList: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {data && (
+        {meta && (
           <div className="mb-6">
-            <p className="text-gray-600">{data.meta.total} actors found</p>
+            <p className="text-gray-600">{meta.total} actors found</p>
           </div>
         )}
 
@@ -56,25 +62,25 @@ const ActorsList: React.FC = () => {
         )}
 
         {/* Actors Grid */}
-        {data && data.data.length > 0 && (
+        {items && items.length > 0 && (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {data.data.map((actor) => (
-                <PersonCard key={actor.id} person={actor} type="actor" />
+              {items.map((actor: any) => (
+                <PersonCard key={(actor as any).id ?? (actor as any)._id} person={actor} type="actor" />
               ))}
             </div>
 
             {/* Pagination */}
             <Pagination
-              currentPage={data.meta.page}
-              totalPages={data.meta.pages}
+              currentPage={meta?.page ?? page}
+              totalPages={meta?.pages ?? 1}
               onPageChange={setPage}
             />
           </>
         )}
 
         {/* Empty State */}
-        {data && data.data.length === 0 && (
+        {items && items.length === 0 && (
           <div className="text-center py-16">
             <Users className="w-16 h-16 mx-auto mb-4 text-gray-400" />
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No actors found</h3>

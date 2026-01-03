@@ -230,8 +230,8 @@ const Home: React.FC = () => {
         {data && data.data.length > 0 && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-              {data.data.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
+              {data.data.map((movie: any) => (
+                <MovieCard key={(movie as any).id ?? (movie as any)._id} movie={movie} />
               ))}
             </div>
 

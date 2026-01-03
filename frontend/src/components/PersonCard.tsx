@@ -9,8 +9,10 @@ interface PersonCardProps {
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({ person, type }) => {
+  const personId = (person as any).id ?? (person as any)._id;
+
   return (
-    <Link to={`/${type}s/${person.id}`} className="block group">
+    <Link to={`/${type}s/${personId}`} className="block group">
       <div className="card h-full">
         <div className="aspect-square bg-gray-200 flex items-center justify-center overflow-hidden">
           {person.profile_image ? (
