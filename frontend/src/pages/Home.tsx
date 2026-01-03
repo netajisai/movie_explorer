@@ -33,7 +33,7 @@ const Home: React.FC = () => {
   // Fetch movies
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['movies', filters],
-    queryFn: () => moviesApi.getAll(filters),
+    queryFn: () => moviesApi.filter(filters),
   });
 
   // Update URL when filters change
@@ -48,6 +48,18 @@ const Home: React.FC = () => {
     if (filters.order) params.set('order', filters.order);
     setSearchParams(params);
   }, [filters, setSearchParams]);
+
+  // If the URL contained a genre name (legacy), map it to the correct genre id once genres load
+  useEffect(() => {
+    if (!genres) return;
+    if (!filters.genre_id) return;
+
+    // If the current genre_id matches a genre name, replace with the actual id
+    const matchedByName = genres.find(g => g.name === filters.genre_id);
+    if (matchedByName && matchedByName.id !== filters.genre_id) {
+      setFilters(prev => ({ ...prev, genre_id: (matchedByName as any).id ?? (matchedByName as any)._id }));
+    }
+  }, [genres]);
 
   const handleFilterChange = (key: keyof MovieFilters, value: any) => {
     setFilters(prev => ({ ...prev, [key]: value, page: 1 }));
@@ -130,7 +142,10 @@ const Home: React.FC = () => {
                 >
                   <option value="">All Genres</option>
                   {genres?.map((genre) => (
-                    <option key={genre.id} value={genre.id}>
+                    <option
+                      key={(genre as any).id ?? (genre as any)._id ?? genre.name}
+                      value={(genre as any).id ?? (genre as any)._id ?? genre.name}
+                    >
                       {genre.name}
                     </option>
                   ))}
