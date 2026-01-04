@@ -403,40 +403,6 @@ docker build -t movie-explorer-frontend:latest .
 
 ---
 
-## 🚢 Deployment
-
-### Backend Deployment
-
-**Recommended Platforms:**
-- Railway
-- Render
-- Heroku
-- DigitalOcean App Platform
-
-**Environment Setup:**
-1. Set environment variables
-2. Configure MongoDB connection string
-3. Set `DEBUG=False` for production
-4. Use gunicorn or uvicorn workers
-
-### Frontend Deployment
-
-**Recommended Platforms:**
-- Vercel (recommended)
-- Netlify
-- Cloudflare Pages
-
-**Build Commands:**
-```bash
-npm install
-npm run build
-```
-
-**Environment Variables:**
-- Set `VITE_API_URL` to your backend URL
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
