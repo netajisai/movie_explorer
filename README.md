@@ -1,65 +1,72 @@
 # 🎬 Movie Explorer
 
-A full-stack Movie Explorer Platform built with FastAPI (backend) and React (frontend). This application allows users to explore movies, actors, directors, and genres with advanced filtering and search capabilities.
+A modern full-stack web application for exploring movies, actors, directors, and genres. Built with FastAPI (Python) backend and React + TypeScript frontend.
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-18.2+-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green.svg)](https://www.mongodb.com/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 
 ---
 
 ## 📋 Table of Contents
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Local Development](#local-development)
-  - [Docker Development](#docker-development)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [Environment Variables](#environment-variables)
-- [Contributing](#contributing)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Backend Setup](#-backend-setup)
+- [Frontend Setup](#-frontend-setup)
+- [API Documentation](#-api-documentation)
+- [Environment Variables](#-environment-variables)
+- [Testing](#-testing)
+- [Deployment](#-deployment)
+- [Contributing](#-contributing)
 
 ---
 
 ## ✨ Features
 
-### Backend (FastAPI)
-- 🎯 RESTful API with full CRUD operations
-- 🔍 Advanced filtering and search (by genre, director, actor, year, rating)
-- 📊 Pagination and sorting on all list endpoints
-- ⭐ Movie ratings and reviews system
-- 🔗 Relationship management (Movies ↔ Actors, Directors, Genres)
-- 📝 Automatic API documentation (Swagger/OpenAPI)
-- ✅ Comprehensive unit tests
-- 🐳 Docker & Docker Compose support
-- 🔒 Input validation with Pydantic
-- 📦 MongoDB with async operations (Motor)
+### Core Functionality
+- 🎥 **Browse Movies** - Explore a comprehensive catalog with detailed information
+- 🔍 **Advanced Filtering** - Filter by genre, year, rating, director, and actor
+- ⭐ **Reviews & Ratings** - Add and view movie reviews with star ratings
+- 👥 **Actor Profiles** - View actor biographies and complete filmographies
+- 🎬 **Director Profiles** - Explore director details, awards, and their works
+- 📱 **Responsive Design** - Seamless experience across all devices
+- 🚀 **Fast Performance** - Optimized backend and frontend with caching
 
-### Data Models
-- **Movies**: Title, description, release year, duration, ratings
-- **Actors**: Name, bio, filmography
-- **Directors**: Name, bio, awards, filmography
-- **Genres**: Name, description
+### Technical Highlights
+- **RESTful API** with automatic OpenAPI/Swagger documentation
+- **Pagination** on all list endpoints
+- **Full-text search** capabilities
+- **Data validation** with Pydantic
+- **Type-safe** frontend with TypeScript
+- **Modern UI** with Tailwind CSS
+- **Docker support** for easy deployment
 
 ---
 
 ## 🛠️ Tech Stack
 
-**Backend:**
-- FastAPI - Modern Python web framework
-- MongoDB - NoSQL database
-- Motor - Async MongoDB driver
-- Pydantic - Data validation
-- Pytest - Testing framework
-- Uvicorn - ASGI server
+### Backend
+- **FastAPI** - Modern Python web framework
+- **MongoDB** - NoSQL database
+- **Motor** - Async MongoDB driver
+- **Pydantic** - Data validation
+- **Pytest** - Testing framework
+- **Docker** - Containerization
 
-**DevOps:**
-- Docker & Docker Compose
-- GitHub Actions (CI/CD)
+### Frontend
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first styling
+- **React Router** - Client-side routing
+- **React Query** - Data fetching and caching
+- **Axios** - HTTP client
+- **Lucide React** - Icon library
 
 ---
 
@@ -69,258 +76,107 @@ A full-stack Movie Explorer Platform built with FastAPI (backend) and React (fro
 movie_explorer/
 ├── backend/
 │   ├── app/
-│   │   ├── core/               # Core functionality (config, database, exceptions)
-│   │   ├── api/
-│   │   │   └── v1/            # API version 1 routes
-│   │   │       ├── health.py
-│   │   │       ├── movies.py
-│   │   │       ├── actors.py
-│   │   │       ├── directors.py
-│   │   │       └── genres.py
+│   │   ├── core/              # Configuration, database, exceptions
+│   │   ├── api/v1/            # API routes (movies, actors, directors, genres)
 │   │   ├── schemas/           # Pydantic models
 │   │   ├── repositories/      # Database operations
 │   │   ├── services/          # Business logic
-│   │   ├── tests/            # Unit tests
-│   │   └── main.py           # Application entry point
+│   │   └── tests/             # Unit tests
 │   ├── scripts/
-│   │   └── seed_data.py      # Database seeding
-│   ├── requirements.txt
+│   │   └── seed_data.py       # Database seeding
 │   ├── Dockerfile
 │   ├── docker-compose.yml
-│   ├── .env.example
-│   └── pytest.ini
-├── frontend/                  # (To be implemented)
-├── .gitignore
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/        # Reusable UI components
+│   │   ├── pages/             # Page components
+│   │   ├── services/          # API integration
+│   │   ├── types/             # TypeScript types
+│   │   └── utils/             # Helper functions
+│   ├── public/                # Static assets
+│   └── package.json
+│
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
 - **Python 3.11+**
-- **MongoDB** (local or Docker)
-- **Docker & Docker Compose** (optional, for containerized setup)
+- **Node.js 18+**
+- **Docker & Docker Compose** (optional but recommended)
+- **MongoDB** (or use Docker)
 
----
-
-### Local Development
-
-#### 1. Clone the repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/netajisai/movie_explorer.git
-cd movie_explorer/backend
+cd movie_explorer
 ```
 
-#### 2. Create virtual environment
+### Option 1: Using Docker (Recommended)
 
 ```bash
-# Windows
+# Start backend with MongoDB
+cd backend
+docker-compose up --build
+
+# In another terminal, start frontend
+cd frontend
+npm install
+npm run dev
+```
+
+- **Backend API**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs
+- **Frontend**: http://localhost:5173
+
+### Option 2: Manual Setup
+
+Follow the detailed setup instructions below for [Backend](#-backend-setup) and [Frontend](#-frontend-setup).
+
+---
+
+## 🔧 Backend Setup
+
+### 1. Create Virtual Environment
+
+```bash
+cd backend
 python -m venv venv
+
+# Activate virtual environment
+# Windows
 venv\Scripts\activate
 
 # macOS/Linux
-python3 -m venv venv
 source venv/bin/activate
 ```
 
-#### 3. Install dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 4. Set up environment variables
+### 3. Configure Environment
 
-```bash
-# Copy example env file
-cp .env.example .env
-
-# Edit .env with your configuration
-# Required: MONGODB_URI
-```
-
-#### 5. Start MongoDB (if not using Docker)
-
-```bash
-# Using local MongoDB
-mongod
-
-# Or use a MongoDB Atlas connection string in .env
-```
-
-#### 6. Run the application
-
-```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-#### 7. Access the API
-
-- **API**: http://localhost:8000
-- **Swagger Docs**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-
----
-
-### Docker Development (Recommended)
-
-#### 1. Using Docker Compose
-
-```bash
-cd backend
-docker-compose up --build
-```
-
-This will:
-- Start MongoDB container on port `27017`
-- Start FastAPI backend on port `8000`
-- Set up networking between containers
-
-#### 2. Access the API
-
-- **API**: http://localhost:8000
-- **Swagger Docs**: http://localhost:8000/docs
-
-#### 3. View logs
-
-```bash
-docker-compose logs -f backend
-```
-
-#### 4. Stop services
-
-```bash
-docker-compose down
-```
-
----
-
-## 📖 API Documentation
-
-### Base URL
-```
-http://localhost:8000/api/v1
-```
-
-### Core Endpoints
-
-#### Health Check
-```http
-GET /api/v1/health
-```
-
-#### Movies
-```http
-GET    /api/v1/movies              # List movies with filters
-GET    /api/v1/movies/{id}         # Get movie details
-POST   /api/v1/movies              # Create movie
-PUT    /api/v1/movies/{id}         # Update movie
-DELETE /api/v1/movies/{id}         # Delete movie
-POST   /api/v1/movies/{id}/reviews # Add review
-```
-
-**Query Parameters for GET /movies:**
-- `search` - Search in title/description
-- `genre_id` - Filter by genre
-- `director_id` - Filter by director
-- `actor_id` - Filter by actor
-- `release_year` - Filter by year
-- `min_rating` - Minimum rating
-- `max_rating` - Maximum rating
-- `page` - Page number (default: 1)
-- `limit` - Items per page (default: 20, max: 100)
-- `sort_by` - Sort field (default: created_at)
-- `order` - Sort order: asc/desc (default: desc)
-
-#### Actors
-```http
-GET    /api/v1/actors              # List actors
-GET    /api/v1/actors/{id}         # Get actor details
-POST   /api/v1/actors              # Create actor
-PUT    /api/v1/actors/{id}         # Update actor
-DELETE /api/v1/actors/{id}         # Delete actor
-GET    /api/v1/actors/{id}/movies  # Get actor's filmography
-```
-
-#### Directors
-```http
-GET    /api/v1/directors              # List directors
-GET    /api/v1/directors/{id}         # Get director details
-POST   /api/v1/directors              # Create director
-PUT    /api/v1/directors/{id}         # Update director
-DELETE /api/v1/directors/{id}         # Delete director
-GET    /api/v1/directors/{id}/movies  # Get director's filmography
-```
-
-#### Genres
-```http
-GET    /api/v1/genres        # List genres
-GET    /api/v1/genres/{id}   # Get genre details
-POST   /api/v1/genres        # Create genre
-PUT    /api/v1/genres/{id}   # Update genre
-DELETE /api/v1/genres/{id}   # Delete genre
-```
-
-### Interactive API Documentation
-
-Visit **http://localhost:8000/docs** for:
-- Complete API reference
-- Interactive request/response testing
-- Schema documentation
-- Try-it-out functionality
-
----
-
-## 🧪 Testing
-
-### Run all tests
-
-```bash
-# From backend directory with venv activated
-pytest
-
-# With coverage
-pytest --cov=app --cov-report=html
-
-# Verbose output
-pytest -v
-
-# Quick mode (no output capture)
-pytest -q
-```
-
-### Run specific tests
-
-```bash
-# Test specific file
-pytest app/tests/test_movies.py
-
-# Test specific function
-pytest app/tests/test_movies.py::test_create_movie
-
-# Run tests matching pattern
-pytest -k "movie"
-```
-
----
-
-## 🔐 Environment Variables
-
-Create a `.env` file in the `backend/` directory:
+Create `.env` file in `backend/` directory:
 
 ```env
+# MongoDB
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DB_NAME=movie_explorer
+
 # Application
 APP_NAME=Movie Explorer API
 APP_VERSION=1.0.0
 DEBUG=True
-
-# MongoDB
-MONGODB_URI=mongodb://localhost:27017
-MONGODB_DB_NAME=movie_explorer
 
 # API
 API_V1_PREFIX=/api/v1
@@ -331,85 +187,254 @@ CORS_ORIGINS=http://localhost:3000,http://localhost:5173
 # Pagination
 DEFAULT_PAGE_SIZE=20
 MAX_PAGE_SIZE=100
-
-# Logging
-LOG_LEVEL=INFO
 ```
 
----
-
-## 🗃️ Database Seeding
-
-To populate the database with sample data:
+### 4. Start MongoDB
 
 ```bash
-# From backend directory
+# Using Docker
+docker run -d -p 27017:27017 --name mongodb mongo:latest
+
+# Or use local MongoDB installation
+mongod
+```
+
+### 5. Run Backend
+
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### 6. Seed Database (Optional)
+
+```bash
 python -m app.scripts.seed_data
+```
 
-# Or with specific number of movies
-python -m app.scripts.seed_data --count 50
+### 7. Run Tests
+
+```bash
+pytest
 ```
 
 ---
 
-## 🐛 Troubleshooting
+## 💻 Frontend Setup
 
-### MongoDB Connection Issues
+### 1. Install Dependencies
 
 ```bash
-# Check if MongoDB is running
-mongosh
-
-# Or check Docker container
-docker ps | grep mongo
+cd frontend
+npm install
 ```
 
-### Port Already in Use
+### 2. Configure Environment
 
-```bash
-# Kill process on port 8000 (Linux/Mac)
-lsof -ti:8000 | xargs kill -9
+Create `.env` file in `frontend/` directory:
 
-# Windows
-netstat -ano | findstr :8000
-taskkill /PID <PID> /F
+```env
+VITE_API_URL=http://localhost:8000
 ```
 
-### Import Errors
+### 3. Run Frontend
 
 ```bash
-# Reinstall dependencies
-pip install -r requirements.txt --force-reinstall
+npm run dev
+```
+
+Frontend will be available at http://localhost:5173
+
+### 4. Build for Production
+
+```bash
+npm run build
+npm run preview
 ```
 
 ---
 
-## 📦 Deployment
+## 📖 API Documentation
 
-### Production Checklist
+### Interactive Documentation
 
-- [ ] Set `DEBUG=False` in production
-- [ ] Use strong MongoDB credentials
-- [ ] Enable HTTPS/TLS
-- [ ] Set up proper CORS origins
-- [ ] Configure logging for production
-- [ ] Set up monitoring (e.g., Sentry)
-- [ ] Use gunicorn or similar WSGI server
-- [ ] Set up CI/CD pipeline
-- [ ] Configure backup strategy for MongoDB
+Once the backend is running, visit:
+- **Swagger UI**: http://localhost:8000/docs
+- **ReDoc**: http://localhost:8000/redoc
 
-### Deploy with Docker
+### Main Endpoints
+
+#### Movies
+```
+GET    /api/v1/movies              # List movies with filters
+GET    /api/v1/movies/{id}         # Get movie details
+POST   /api/v1/movies              # Create movie
+PUT    /api/v1/movies/{id}         # Update movie
+DELETE /api/v1/movies/{id}         # Delete movie
+POST   /api/v1/movies/{id}/reviews # Add review
+GET    /api/v1/movies/{id}/reviews # Get reviews
+```
+
+**Query Parameters for Filtering:**
+- `search` - Search in title/description
+- `genre_id` - Filter by genre
+- `director_id` - Filter by director
+- `actor_id` - Filter by actor
+- `release_year` - Filter by year
+- `min_rating` - Minimum rating (0-5)
+- `max_rating` - Maximum rating (0-5)
+- `page` - Page number (default: 1)
+- `limit` - Items per page (default: 20, max: 100)
+- `sort_by` - Sort field (default: release_year)
+- `order` - Sort order: asc/desc (default: desc)
+
+#### Actors
+```
+GET    /api/v1/actors              # List actors
+GET    /api/v1/actors/{id}         # Get actor details
+POST   /api/v1/actors              # Create actor
+PUT    /api/v1/actors/{id}         # Update actor
+DELETE /api/v1/actors/{id}         # Delete actor
+```
+
+#### Directors
+```
+GET    /api/v1/directors           # List directors
+GET    /api/v1/directors/{id}      # Get director details
+POST   /api/v1/directors           # Create director
+PUT    /api/v1/directors/{id}      # Update director
+DELETE /api/v1/directors/{id}      # Delete director
+```
+
+#### Genres
+```
+GET    /api/v1/genres              # List genres
+GET    /api/v1/genres/{id}         # Get genre details
+POST   /api/v1/genres              # Create genre
+PUT    /api/v1/genres/{id}         # Update genre
+DELETE /api/v1/genres/{id}         # Delete genre
+```
+
+#### Health
+```
+GET    /api/v1/health              # Health check
+GET    /api/v1/health/stats        # Database statistics
+```
+
+---
+
+## 🔐 Environment Variables
+
+### Backend (.env)
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017` |
+| `MONGODB_DB_NAME` | Database name | `movie_explorer` |
+| `API_V1_PREFIX` | API version prefix | `/api/v1` |
+| `DEBUG` | Debug mode | `True` |
+| `CORS_ORIGINS` | Allowed CORS origins | `http://localhost:3000,http://localhost:5173` |
+
+### Frontend (.env)
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `VITE_API_URL` | Backend API URL | `http://localhost:8000` |
+
+---
+
+## 🧪 Testing
+
+### Backend Tests
 
 ```bash
-# Build production image
+cd backend
+
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=app --cov-report=html
+
+# Run specific test file
+pytest app/tests/test_movies.py
+
+# Verbose output
+pytest -v
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+
+# Run linting
+npm run lint
+
+# Type checking
+npx tsc --noEmit
+```
+
+---
+
+## 🐳 Docker Deployment
+
+### Backend with Docker Compose
+
+```bash
+cd backend
+docker-compose up --build
+```
+
+This starts:
+- FastAPI backend on port 8000
+- MongoDB on port 27017
+
+### Build Production Images
+
+```bash
+# Backend
+cd backend
 docker build -t movie-explorer-backend:latest .
 
-# Run container
-docker run -d \
-  -p 8000:8000 \
-  --env-file .env.production \
-  movie-explorer-backend:latest
+# Frontend
+cd frontend
+npm run build
+docker build -t movie-explorer-frontend:latest .
 ```
+
+---
+
+## 🚢 Deployment
+
+### Backend Deployment
+
+**Recommended Platforms:**
+- Railway
+- Render
+- Heroku
+- DigitalOcean App Platform
+
+**Environment Setup:**
+1. Set environment variables
+2. Configure MongoDB connection string
+3. Set `DEBUG=False` for production
+4. Use gunicorn or uvicorn workers
+
+### Frontend Deployment
+
+**Recommended Platforms:**
+- Vercel (recommended)
+- Netlify
+- Cloudflare Pages
+
+**Build Commands:**
+```bash
+npm install
+npm run build
+```
+
+**Environment Variables:**
+- Set `VITE_API_URL` to your backend URL
 
 ---
 
@@ -423,12 +448,13 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-### Code Style
+### Development Guidelines
 
 - Follow PEP 8 for Python code
-- Use type hints where applicable
-- Write docstrings for functions and classes
-- Add tests for new features
+- Use TypeScript for all React components
+- Write tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
 
 ---
 
@@ -442,24 +468,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Netaji Sai**
 - GitHub: [@netajisai](https://github.com/netajisai)
+- Project: [Movie Explorer](https://github.com/netajisai/movie_explorer)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- FastAPI for the excellent framework
+- FastAPI for the excellent Python framework
+- React team for the amazing UI library
 - MongoDB for the flexible database
-- The Python community for amazing libraries
+- Tailwind CSS for the utility-first CSS framework
+- All open-source contributors
 
 ---
 
 ## 📞 Support
 
-If you have any questions or run into issues, please:
-- Open an issue on GitHub
-- Check the [API documentation](http://localhost:8000/docs)
-- Review existing issues for solutions
+If you encounter any issues or have questions:
+
+1. Check the [API documentation](http://localhost:8000/docs)
+2. Review existing [GitHub issues](https://github.com/netajisai/movie_explorer/issues)
+3. Create a new issue with detailed information
 
 ---
 
 **⭐ Star this repository if you find it helpful!**
+
+**Happy coding! 🚀**
