@@ -2,9 +2,22 @@ import json
 import os
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 
 from bson import ObjectId
+from dotenv import load_dotenv
 from pymongo import MongoClient
+
+
+# Load environment variables from backend/.env if present, else fallback to system env
+repo_backend = Path(__file__).resolve().parents[3]
+dotenv_path = repo_backend / ".env"
+if dotenv_path.exists():
+    load_dotenv(dotenv_path)
+    print(f"Loaded environment from {dotenv_path}")
+else:
+    # attempt default load (searches current working dir and parents)
+    load_dotenv()
 
 
 def parse_value(v):

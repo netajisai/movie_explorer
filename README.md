@@ -139,6 +139,68 @@ npm run dev
 
 Follow the detailed setup instructions below for [Backend](#-backend-setup) and [Frontend](#-frontend-setup).
 
+If Docker is not available or fails
+---------------------------------
+
+If you cannot use Docker, the project can be run locally. These steps assume a working local MongoDB instance or a cloud MongoDB (Atlas).
+
+1) Install MongoDB
+
+- Windows (Community Server): download and run the MSI installer from https://www.mongodb.com/try/download/community and follow the Windows instructions. After install, start the `mongod` service.
+- Alternatively use Chocolatey (Windows, requires admin):
+
+```powershell
+choco install mongodb -y
+```
+- Or use MongoDB Atlas (cloud); get a connection string and use it as `MONGODB_URI`.
+
+2) Seed the database with provided data
+
+Option A — run the included Python seeder (recommended):
+
+```powershell
+# from repo root
+cd backend
+venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+
+# set the env vars (PowerShell)
+$env:MONGODB_URI = 'mongodb://localhost:27017'
+$env:MONGODB_DB_NAME = 'movie_explorer'
+
+# run the seeder (it upserts documents from backend/app/tools/data)
+python app\tools\seed_data.py
+```
+
+Option B — use `mongoimport` to import JSON files directly (files are in `backend/app/tools/data`):
+
+```powershell
+mongoimport --uri "mongodb://localhost:27017/movie_explorer" --collection movies --file backend/app/tools/data/movies.json --jsonArray --mode=upsert --upsertFields _id
+mongoimport --uri "mongodb://localhost:27017/movie_explorer" --collection actors --file backend/app/tools/data/actors.json --jsonArray --mode=upsert --upsertFields _id
+mongoimport --uri "mongodb://localhost:27017/movie_explorer" --collection directors --file backend/app/tools/data/directors.json --jsonArray --mode=upsert --upsertFields _id
+mongoimport --uri "mongodb://localhost:27017/movie_explorer" --collection genres --file backend/app/tools/data/genres.json --jsonArray --mode=upsert --upsertFields _id
+```
+
+3) Run the backend and frontend locally
+
+```powershell
+# backend (from backend/)
+venv\Scripts\activate
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# frontend (from frontend/)
+cd ../frontend
+npm install
+npm run dev
+```
+
+4) Verify
+
+- Backend: `http://localhost:8000/api/v1/genres` should return a JSON list.
+- Frontend: open `http://localhost:5173` in your browser.
+
+If you prefer a managed DB: create a MongoDB Atlas cluster and set `MONGODB_URI` to the provided connection string (include username/password). Then run the seeder with that URI.
+
 ---
 
 ## 🔧 Backend Setup
