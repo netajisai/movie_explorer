@@ -8,7 +8,6 @@ A modern full-stack web application for exploring movies, actors, directors, and
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green.svg)](https://www.mongodb.com/)
 
----
 
 ## 📋 Table of Contents
 

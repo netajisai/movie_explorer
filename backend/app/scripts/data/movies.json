@@ -1,0 +1,94 @@
+[
+  {
+    "_id": {"$oid": "6957d02f290b98a5f08feef7"},
+    "title": "Inception",
+    "description": "A thief enters dreams to steal secrets.",
+    "release_year": 2010,
+    "duration_minutes": 148,
+    "poster_url": "https://cdn11.bigcommerce.com/s-yzgoj/images/stencil/1280x1280/products/2919271/5944675/MOVEB46211__19379.1679590452.jpg?c=2",
+    "backdrop_url": "https://tse1.mm.bing.net/th/id/OIP.Gb4yuboNJxm-Lfjm2KgXsgHaDF?pid=Api&P=0&h=180",
+    "director_id": {"$oid": "695948f401657c1402bf956a"},
+    "actor_ids": [{"$oid": "695948615420c2d40a2078e3"}, {"$oid": "695948625420c2d40a2078e7"}],
+    "genre_ids": [{"$oid": "69593f6b4038d1a85bf0e730"}, {"$oid": "69593f6b4038d1a85bf0e733"}],
+    "ratings": {
+      "average": 4.5,
+      "count": 3,
+      "reviews": [
+        {"rating": 4.5, "comment": "Mind-bending and brilliant.", "created_at": {"$date": "2026-01-04T04:08:42.444Z"}},
+        {"rating": 5, "comment": "A modern masterpiece.", "created_at": {"$date": "2026-01-04T04:08:42.446Z"}},
+        {"rating": 4, "comment": "Great visuals and score.", "created_at": {"$date": "2026-01-04T04:08:42.446Z"}}
+      ]
+    },
+    "created_at": {"$date": "2026-01-02T14:03:27.037Z"},
+    "updated_at": {"$date": "2026-01-04T04:08:42.485Z"}
+  },
+  {
+    "_id": {"$oid": "69594d186655c3f2b36341e8"},
+    "title": "Interstellar",
+    "description": "Humanity searches for a new home beyond Earth.",
+    "release_year": 2014,
+    "duration_minutes": 169,
+    "poster_url": "https://image.tmdb.org/t/p/original/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+    "backdrop_url": "https://tse1.mm.bing.net/th/id/OIP.49M3CgFCY8KKCYvArkN82gHaCF?pid=Api&P=0&h=180",
+    "director_id": {"$oid": "695948f401657c1402bf956a"},
+    "actor_ids": [{"$oid": "695948625420c2d40a2078e5"}, {"$oid": "695948625420c2d40a2078e8"}],
+    "genre_ids": [{"$oid": "69593f6b4038d1a85bf0e730"}, {"$oid": "69593f6b4038d1a85bf0e732"}, {"$oid": "69593f6b4038d1a85bf0e735"}],
+    "updated_at": {"$date": "2026-01-04T04:08:42.562Z"},
+    "created_at": {"$date": "2026-01-03T17:08:40.122Z"},
+    "ratings": {
+      "average": 4.375,
+      "count": 4,
+      "reviews": [
+        {"rating": 5, "comment": "Awe-inspiring and emotional.", "created_at": {"$date": "2026-01-04T04:08:42.446Z"}},
+        {"rating": 4.5, "comment": "Fantastic scope and ideas.", "created_at": {"$date": "2026-01-04T04:08:42.448Z"}},
+        {"rating": 4, "comment": "Loved the ending.", "created_at": {"$date": "2026-01-04T04:08:42.453Z"}},
+        {"rating": 4, "comment": "Super Scientific thriller", "created_at": {"$date": "2026-01-04T04:12:05.596Z"}}
+      ]
+    }
+  },
+  {
+    "_id": {"$oid": "69594d186655c3f2b36341e9"},
+    "title": "The Dark Knight",
+    "description": "Batman faces the Joker in Gotham.",
+    "release_year": 2008,
+    "duration_minutes": 152,
+    "poster_url": "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "backdrop_url": "https://tse3.mm.bing.net/th/id/OIP.kodVz3uWn19CoRhPz3ibfwHaDK?pid=Api&P=0&h=180",
+    "director_id": {"$oid": "695948f401657c1402bf956a"},
+    "actor_ids": [{"$oid": "695948615420c2d40a2078e4"}],
+    "genre_ids": [{"$oid": "69593f6b4038d1a85bf0e731"}, {"$oid": "69593f6b4038d1a85bf0e734"}, {"$oid": "69593f6b4038d1a85bf0e733"}],
+    "updated_at": {"$date": "2026-01-04T04:08:42.566Z"},
+    "created_at": {"$date": "2026-01-03T17:08:40.122Z"},
+    "ratings": {"average": 4.5, "count": 3, "reviews": [{"rating": 5, "comment": "Heath Ledger is astonishing.", "created_at": {"$date": "2026-01-04T04:08:42.454Z"}}, {"rating": 4.5, "comment": "Iconic superhero film.", "created_at": {"$date": "2026-01-04T04:08:42.460Z"}}, {"rating": 4, "comment": "Dark and gripping.", "created_at": {"$date": "2026-01-04T04:08:42.468Z"}}]}
+  },
+  {
+    "_id": {"$oid": "69594d186655c3f2b36341ea"},
+    "title": "Fight Club",
+    "description": "An underground fight club spirals out of control.",
+    "release_year": 1999,
+    "duration_minutes": 139,
+    "poster_url": "https://image.tmdb.org/t/p/original/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg",
+    "backdrop_url": "https://tse3.mm.bing.net/th/id/OIP.1SXwmhI2ID5qhQu1v4WW1gHaDX?pid=Api&P=0&h=180",
+    "director_id": {"$oid": "695948f401657c1402bf956b"},
+    "actor_ids": [{"$oid": "695948625420c2d40a2078e6"}],
+    "genre_ids": [{"$oid": "69593f6b4038d1a85bf0e732"}, {"$oid": "69593f6b4038d1a85bf0e734"}],
+    "updated_at": {"$date": "2026-01-04T04:08:42.570Z"},
+    "created_at": {"$date": "2026-01-03T17:08:40.122Z"},
+    "ratings": {"average": 4, "count": 3, "reviews": [{"rating": 4.5, "comment": "Twisty and unforgettable.", "created_at": {"$date": "2026-01-04T04:08:42.469Z"}}, {"rating": 4, "comment": "Great performances.", "created_at": {"$date": "2026-01-04T04:08:42.469Z"}}, {"rating": 3.5, "comment": "A bit rough but thrilling.", "created_at": {"$date": "2026-01-04T04:08:42.470Z"}}]}
+  },
+  {
+    "_id": {"$oid": "69594d186655c3f2b36341eb"},
+    "title": "Gladiator",
+    "description": "A Roman general seeks revenge.",
+    "release_year": 2000,
+    "duration_minutes": 155,
+    "poster_url": "https://image.tmdb.org/t/p/original/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
+    "backdrop_url": "https://tse1.mm.bing.net/th/id/OIP.0ExyL1kCxKcGWc1o84KnSgHaDt?pid=Api&P=0&h=180",
+    "director_id": {"$oid": "695948f401657c1402bf956d"},
+    "actor_ids": [{"$oid": "695948625420c2d40a2078e8"}],
+    "genre_ids": [{"$oid": "69593f6b4038d1a85bf0e731"}, {"$oid": "69593f6b4038d1a85bf0e735"}, {"$oid": "69593f6b4038d1a85bf0e732"}],
+    "updated_at": {"$date": "2026-01-04T04:08:42.576Z"},
+    "created_at": {"$date": "2026-01-03T17:08:40.122Z"},
+    "ratings": {"average": 4.17, "count": 3, "reviews": [{"rating": 4.5, "comment": "Epic and emotional.", "created_at": {"$date": "2026-01-04T04:08:42.475Z"}}, {"rating": 4, "comment": "Strong lead performance.", "created_at": {"$date": "2026-01-04T04:08:42.477Z"}}, {"rating": 4, "comment": "Beautiful visuals and score.", "created_at": {"$date": "2026-01-04T04:08:42.478Z"}}]}
+  }
+]

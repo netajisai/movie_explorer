@@ -1,0 +1,8 @@
+[
+  {"_id": {"$oid": "69593f6b4038d1a85bf0e730"}, "name": "Sci-Fi", "description": "Science fiction with futuristic concepts", "created_at": {"$date": "2026-01-03T16:10:18.276Z"}, "updated_at": {"$date": "2026-01-03T16:10:18.276Z"}},
+  {"_id": {"$oid": "69593f6b4038d1a85bf0e731"}, "name": "Action", "description": "High-energy action-packed movies", "created_at": {"$date": "2026-01-03T16:10:18.276Z"}, "updated_at": {"$date": "2026-01-03T16:10:18.276Z"}},
+  {"_id": {"$oid": "69593f6b4038d1a85bf0e732"}, "name": "Drama", "description": "Emotion-driven storytelling", "created_at": {"$date": "2026-01-03T16:10:18.276Z"}, "updated_at": {"$date": "2026-01-03T16:10:18.276Z"}},
+  {"_id": {"$oid": "69593f6b4038d1a85bf0e733"}, "name": "Thriller", "description": "Suspense and tension-filled narratives", "created_at": {"$date": "2026-01-03T16:10:18.276Z"}, "updated_at": {"$date": "2026-01-03T16:10:18.276Z"}},
+  {"_id": {"$oid": "69593f6b4038d1a85bf0e734"}, "name": "Crime", "description": "Crime, investigation, and underworld stories", "created_at": {"$date": "2026-01-03T16:10:18.276Z"}, "updated_at": {"$date": "2026-01-03T16:10:18.276Z"}},
+  {"_id": {"$oid": "69593f6b4038d1a85bf0e735"}, "name": "Adventure", "description": "Exploration and epic journeys", "created_at": {"$date": "2026-01-03T16:10:18.276Z"}, "updated_at": {"$date": "2026-01-03T16:10:18.276Z"}}
+]

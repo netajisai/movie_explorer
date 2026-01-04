@@ -1,0 +1,57 @@
+[
+  {
+    "_id": { "$oid": "695948f401657c1402bf956a" },
+    "name": "Christopher Nolan",
+    "bio": "Known for complex narratives and non-linear storytelling.",
+    "birth_date": { "$date": "1970-07-30T00:00:00.000Z" },
+    "nationality": "British-American",
+    "profile_image": "https://tse2.mm.bing.net/th/id/OIP.gTCCrZvNcmDT031G41roGAHaDt?pid=Api&P=0&h=180",
+    "awards": ["Academy Award", "Golden Globe"],
+    "updated_at": { "$date": "2026-01-03T16:51:00.553Z" },
+    "created_at": { "$date": "2026-01-03T16:51:00.553Z" }
+  },
+  {
+    "_id": { "$oid": "695948f401657c1402bf956b" },
+    "name": "David Fincher",
+    "bio": "Expert in psychological thrillers.",
+    "birth_date": { "$date": { "$numberLong": "-231811200000" } },
+    "nationality": "American",
+    "profile_image": "https://tse3.mm.bing.net/th/id/OIP.4DL_cyJqOmXC7lWcO329WwHaLH?pid=Api&P=0&h=180",
+    "awards": ["Golden Globe"],
+    "updated_at": { "$date": "2026-01-03T16:51:00.553Z" },
+    "created_at": { "$date": "2026-01-03T16:51:00.553Z" }
+  },
+  {
+    "_id": { "$oid": "695948f401657c1402bf956c" },
+    "name": "Steven Spielberg",
+    "bio": "One of the most influential filmmakers in history.",
+    "birth_date": { "$date": { "$numberLong": "-727056000000" } },
+    "nationality": "American",
+    "profile_image": "https://tse4.mm.bing.net/th/id/OIP.jsI3fPdwOrNxe8VO6E2ycQHaE0?pid=Api&P=0&h=180",
+    "awards": ["Academy Award", "BAFTA"],
+    "updated_at": { "$date": "2026-01-03T16:51:00.553Z" },
+    "created_at": { "$date": "2026-01-03T16:51:00.553Z" }
+  },
+  {
+    "_id": { "$oid": "695948f401657c1402bf956d" },
+    "name": "Ridley Scott",
+    "bio": "Known for epic sci-fi and historical films.",
+    "birth_date": { "$date": { "$numberLong": "-1012608000000" } },
+    "nationality": "British",
+    "profile_image": "https://tse4.mm.bing.net/th/id/OIP.AvWsFEf7OpMTj81S1zjZFwHaJ3?pid=Api&P=0&h=180",
+    "awards": ["BAFTA"],
+    "updated_at": { "$date": "2026-01-03T16:51:00.553Z" },
+    "created_at": { "$date": "2026-01-03T16:51:00.553Z" }
+  },
+  {
+    "_id": { "$oid": "695948f401657c1402bf956e" },
+    "name": "Martin Scorsese",
+    "bio": "Master of crime and character-driven cinema.",
+    "birth_date": { "$date": { "$numberLong": "-855964800000" } },
+    "nationality": "American",
+    "profile_image": "https://tse1.mm.bing.net/th/id/OIP.ozrOu7fHSNACpFWSRp3j2QHaEK?pid=Api&P=0&h=180",
+    "awards": ["Academy Award"],
+    "updated_at": { "$date": "2026-01-03T16:51:00.553Z" },
+    "created_at": { "$date": "2026-01-03T16:51:00.553Z" }
+  }
+]
