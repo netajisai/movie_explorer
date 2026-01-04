@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
-import { moviesApi, genresApi } from '@/services/api';
+import { moviesApi, genresApi, actorsApi, directorsApi } from '@/services/api';
 import MovieCard from '@/components/MovieCard';
 import { MovieCardSkeleton } from '@/components/LoadingSkeleton';
 import ErrorMessage from '@/components/ErrorMessage';
@@ -30,6 +30,21 @@ const Home: React.FC = () => {
     queryFn: () => genresApi.getAll(),
   });
 
+  // Fetch actors and directors for filters — normalize response shape
+  const { data: actorsResp } = useQuery({
+    queryKey: ['actors-list'],
+    queryFn: () => actorsApi.getAll(1, 100),
+  });
+
+  const actors = Array.isArray(actorsResp) ? actorsResp : actorsResp?.data ?? [];
+
+  const { data: directorsResp } = useQuery({
+    queryKey: ['directors-list'],
+    queryFn: () => directorsApi.getAll(1, 100),
+  });
+
+  const directors = Array.isArray(directorsResp) ? directorsResp : directorsResp?.data ?? [];
+
   // Fetch movies
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['movies', filters],
@@ -41,6 +56,8 @@ const Home: React.FC = () => {
     const params = new URLSearchParams();
     if (filters.search) params.set('search', filters.search);
     if (filters.genre_id) params.set('genre_id', filters.genre_id);
+    if (filters.actor_id) params.set('actor_id', filters.actor_id);
+    if (filters.director_id) params.set('director_id', filters.director_id);
     if (filters.release_year) params.set('release_year', filters.release_year.toString());
     if (filters.min_rating) params.set('min_rating', filters.min_rating.toString());
     if (filters.page) params.set('page', filters.page.toString());
@@ -48,6 +65,22 @@ const Home: React.FC = () => {
     if (filters.order) params.set('order', filters.order);
     setSearchParams(params);
   }, [filters, setSearchParams]);
+
+  // Map legacy names in URL for actor/director to actual ids once lists load
+  useEffect(() => {
+    if (actors && filters.actor_id) {
+      const matched = actors.find(a => a.name === filters.actor_id);
+      if (matched && (matched as any).id !== filters.actor_id) {
+        setFilters(prev => ({ ...prev, actor_id: (matched as any).id ?? (matched as any)._id }));
+      }
+    }
+    if (directors && filters.director_id) {
+      const matched = directors.find(d => d.name === filters.director_id);
+      if (matched && (matched as any).id !== filters.director_id) {
+        setFilters(prev => ({ ...prev, director_id: (matched as any).id ?? (matched as any)._id }));
+      }
+    }
+  }, [actors, directors]);
 
   // If the URL contained a genre name (legacy), map it to the correct genre id once genres load
   useEffect(() => {
@@ -78,7 +111,7 @@ const Home: React.FC = () => {
     });
   };
 
-  const hasActiveFilters = filters.search || filters.genre_id || filters.release_year || filters.min_rating;
+  const hasActiveFilters = filters.search || filters.genre_id || filters.actor_id || filters.director_id || filters.release_year || filters.min_rating;
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -129,7 +162,7 @@ const Home: React.FC = () => {
         {/* Filter Panel */}
         {isFilterOpen && (
           <div className="card p-6 mb-8">
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-6 gap-4">
               {/* Genre Filter */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -147,6 +180,46 @@ const Home: React.FC = () => {
                       value={(genre as any).id ?? (genre as any)._id ?? genre.name}
                     >
                       {genre.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Actor Filter */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Actor</label>
+                <select
+                  value={filters.actor_id || ''}
+                  onChange={(e) => handleFilterChange('actor_id', e.target.value)}
+                  className="input"
+                >
+                  <option value="">All Actors</option>
+                  {actors?.map((actor) => (
+                    <option
+                      key={(actor as any).id ?? (actor as any)._id ?? actor.name}
+                      value={(actor as any).id ?? (actor as any)._id ?? actor.name}
+                    >
+                      {actor.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Director Filter */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Director</label>
+                <select
+                  value={filters.director_id || ''}
+                  onChange={(e) => handleFilterChange('director_id', e.target.value)}
+                  className="input"
+                >
+                  <option value="">All Directors</option>
+                  {directors?.map((director) => (
+                    <option
+                      key={(director as any).id ?? (director as any)._id ?? director.name}
+                      value={(director as any).id ?? (director as any)._id ?? director.name}
+                    >
+                      {director.name}
                     </option>
                   ))}
                 </select>

@@ -9,6 +9,8 @@ from app.schemas.movie import (
     MovieResponse,
     MovieListResponse,
     MovieFilterParams,
+    ReviewCreateRequest,
+    ReviewSchema,
 )
 from app.services.movie import MovieService
 from app.repositories.movie import MovieRepository
@@ -117,3 +119,30 @@ async def get_movie(
 ):
     movie = await service.get_movie(movie_id)
     return SuccessResponse(data=movie)
+
+
+# ---------- REVIEWS ----------
+@router.post(
+    "/{movie_id}/reviews",
+    response_model=SuccessResponse[MovieResponse],
+    status_code=status.HTTP_201_CREATED,
+)
+async def add_review(
+    movie_id: str,
+    payload: ReviewCreateRequest,
+    service: MovieService = Depends(get_movie_service),
+):
+    movie = await service.add_review(movie_id, payload)
+    return SuccessResponse(data=movie)
+
+
+@router.get(
+    "/{movie_id}/reviews",
+    response_model=list[ReviewSchema],
+)
+async def get_reviews(
+    movie_id: str,
+    service: MovieService = Depends(get_movie_service),
+):
+    reviews = await service.get_reviews(movie_id)
+    return reviews

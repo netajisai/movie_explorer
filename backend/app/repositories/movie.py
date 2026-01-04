@@ -115,3 +115,29 @@ class MovieRepository(BaseRepository):
                 }
             },
         ]
+
+    # ---------------- REVIEWS ----------------
+    async def add_review(self, movie_id: str, review: dict) -> dict | None:
+        """Append a review to a movie and return the updated movie document (full lookup projection)."""
+        # push the review and increment count
+        result = await self.collection.update_one(
+            {"_id": ObjectId(movie_id)},
+            {"$push": {"ratings.reviews": review}, "$inc": {"ratings.count": 1}},
+        )
+        if result.matched_count == 0:
+            return None
+
+        # Recompute average from stored reviews
+        doc = await self.collection.find_one({"_id": ObjectId(movie_id)}, {"ratings.reviews": 1})
+        reviews = doc.get("ratings", {}).get("reviews", []) if doc else []
+        avg = float(sum(r.get("rating", 0) for r in reviews) / len(reviews)) if reviews else 0.0
+
+        await self.collection.update_one({"_id": ObjectId(movie_id)}, {"$set": {"ratings.average": avg, "ratings.count": len(reviews)}})
+
+        return await self.get_movie_by_id(movie_id)
+
+    async def get_reviews(self, movie_id: str) -> List[dict]:
+        doc = await self.collection.find_one({"_id": ObjectId(movie_id)}, {"ratings.reviews": 1, "_id": 0})
+        if not doc:
+            return []
+        return doc.get("ratings", {}).get("reviews", [])

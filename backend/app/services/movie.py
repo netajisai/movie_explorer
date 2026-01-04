@@ -8,6 +8,7 @@ from app.schemas.movie import (
     MovieListResponse, 
     MovieFilterParams
 )
+from app.schemas.movie import ReviewCreateRequest
 from app.schemas.base import PaginationParams
 from app.core.exceptions import (
     NotFoundException,
@@ -79,5 +80,23 @@ class MovieService:
             deleted = await self.repo.delete(movie_id)
             if not deleted:
                 raise NotFoundException("Movie")
+        except PyMongoError:
+            raise DatabaseException()
+
+    async def add_review(self, movie_id: str, payload: ReviewCreateRequest) -> MovieResponse:
+        from datetime import datetime
+        try:
+            review = {"rating": payload.rating, "comment": payload.comment, "created_at": datetime.utcnow()}
+            updated = await self.repo.add_review(movie_id, review)
+            if not updated:
+                raise NotFoundException("Movie")
+            return MovieResponse(**updated)
+        except PyMongoError:
+            raise DatabaseException()
+
+    async def get_reviews(self, movie_id: str) -> list:
+        try:
+            reviews = await self.repo.get_reviews(movie_id)
+            return reviews
         except PyMongoError:
             raise DatabaseException()
